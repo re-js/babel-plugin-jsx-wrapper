@@ -1,0 +1,50 @@
+{
+  "name": "babel-plugin-realar",
+  "description": "Automatic observe jsx arrow functions for Realar",
+  "version": "0.1.0",
+  "main": "./src/plugin.js",
+  "scripts": {
+    "test": "jest",
+    "test:reset-cache": "jest --clearCache",
+    "eslint": "eslint . --ext js --fix",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "@babel/core": "7.12.10"
+  },
+  "devDependencies": {
+    "jest": "26.6.3",
+    "eslint": "7.15.0",
+    "eslint-config-prettier": "7.0.0",
+    "prettier": "2.2.1"
+  },
+  "prettier": {
+    "arrowParens": "avoid",
+    "printWidth": 100,
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "useTabs": false
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/betula/babel-plugin-realar.git"
+  },
+  "keywords": [
+    "realar",
+    "auto observe",
+    "observe",
+    "observer",
+    "babel plugin",
+    "babel",
+    "transform",
+    "jsx",
+    "react"
+  ],
+  "author": "Slava Birch <mail@betula.co>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/betula/babel-plugin-realar/issues"
+  },
+  "homepage": "https://github.com/betula/babel-plugin-realar#readme"
+}

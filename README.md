@@ -1,9 +1,10 @@
 # babel-plugin-realar
 
+[![npm version](https://img.shields.io/npm/v/babel-plugin-realar?style=flat-square)](https://www.npmjs.com/package/babel-plugin-realar) [![code coverage](https://img.shields.io/coveralls/github/betula/babel-plugin-realar?style=flat-square)](https://coveralls.io/github/betula/babel-plugin-realar)
+
 Automatic observe jsx arrow functions for [Realar](https://github.com/betula/realar) for smartify and purify your code :+1:
 
 That plugin for babel wrap all not wrapped arrow function (that contains JSX) to Realar `observe` function. Less code more effectivity!
-
 
 ```javascript
 import React from 'react';
