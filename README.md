@@ -16,7 +16,6 @@ class Ticker {
 
 const sharedTicker = () => shared(Ticker);
 
-// You are no need more to wrap (decorate) JSX components to `observe` function! It will be automatic.
 const App = () => {
   const { value, next } = sharedTicker();
 
@@ -30,10 +29,12 @@ const App = () => {
 };
 ```
 
+You are no need more to wrap (decorate) JSX components to `observe` function! It will be automatic.
+
 ### Installation
 
 ```bash
-npm install babel-plugin-realar
+npm install --save-dev babel-plugin-realar
 # or
 yarn add babel-plugin-realar
 ```
@@ -41,8 +42,8 @@ yarn add babel-plugin-realar
 And update your babel config:
 
 ```javascript
-// .babelrc.js
-module.exports = {
+// .babelrc
+{
   "plugins": [
     "realar"
   ]
