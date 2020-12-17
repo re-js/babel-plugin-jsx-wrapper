@@ -6,16 +6,13 @@
   "scripts": {
     "test": "jest",
     "test:reset-cache": "jest --clearCache",
-    "eslint": "eslint . --ext js --fix",
-    "format": "prettier --write ."
+    "format": "prettier --write src tests"
   },
   "dependencies": {
     "@babel/core": "7.12.10"
   },
   "devDependencies": {
     "jest": "26.6.3",
-    "eslint": "7.15.0",
-    "eslint-config-prettier": "7.0.0",
     "prettier": "2.2.1"
   },
   "prettier": {
