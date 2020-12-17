@@ -3,6 +3,9 @@
   "description": "Automatic observe jsx arrow functions for Realar",
   "version": "0.1.0",
   "main": "./src/plugin.js",
+  "files": [
+    "src"
+  ],
   "scripts": {
     "test": "jest",
     "test:reset-cache": "jest --clearCache",
