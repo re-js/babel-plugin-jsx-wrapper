@@ -11,10 +11,11 @@
     "test:reset-cache": "jest --clearCache",
     "format": "prettier --write src tests"
   },
-  "dependencies": {
-    "@babel/core": "7.12.10"
+  "peerDependencies": {
+    "@babel/core": "*"
   },
   "devDependencies": {
+    "@babel/core": "7.12.10",
     "jest": "26.6.3",
     "prettier": "2.2.1"
   },
