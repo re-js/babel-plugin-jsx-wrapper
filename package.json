@@ -11,7 +11,7 @@
     "test:reset-cache": "jest --clearCache",
     "format": "prettier --write src tests"
   },
-  "optionalDependencies": {
+  "peerDependencies": {
     "@babel/core": "*"
   },
   "devDependencies": {
