@@ -30,7 +30,7 @@ const App = () => {
 };
 ```
 
-[See wrapped version of it on CodeSandbox](https://codesandbox.io/s/realar-jsx-observe-example-5f2k2?file=/src/App.tsx)
+[See wrapped version of it on CodeSandbox](https://codesandbox.io/s/realar-jsx-observe-example-5f2k2?file=/src/App.tsx).
 
 You are no need more to wrap (decorate) JSX components to `observe` function! It will be automatic.
 
