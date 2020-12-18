@@ -8,7 +8,7 @@ That plugin for babel wraps all not wrapped arrow functions (that contains JSX) 
 
 ```javascript
 import React from 'react';
-import { box, shared } from 'realar';
+import { box, shared, /* observe */ } from 'realar';
 
 class Ticker {
   @box value = 0;
@@ -17,6 +17,7 @@ class Ticker {
 
 const sharedTicker = () => shared(Ticker);
 
+// const App = observe(() => {
 const App = () => {
   const { value, next } = sharedTicker();
   return (
