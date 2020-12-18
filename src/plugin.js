@@ -2,7 +2,7 @@ const { view_transform } = require('./view-transform');
 
 function plugin() {
   return {
-    name: 'babel-plugin-jsx-decor',
+    name: 'babel-plugin-realar',
     manipulateOptions(_opts, parserOpts) {
       parserOpts.plugins.push('jsx');
     },
