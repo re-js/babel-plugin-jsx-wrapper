@@ -14,9 +14,6 @@
   "optionalDependencies": {
     "@babel/core": "*"
   },
-  "peerDependencies": {
-    "@babel/core": "*"
-  },
   "devDependencies": {
     "@babel/core": "7.12.10",
     "jest": "26.6.3",
