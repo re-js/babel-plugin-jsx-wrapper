@@ -1,7 +1,7 @@
 {
   "name": "babel-plugin-realar",
   "description": "Automatic observe jsx arrow functions for Realar",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "main": "./src/plugin.js",
   "files": [
     "src"
