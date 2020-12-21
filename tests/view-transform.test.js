@@ -57,7 +57,7 @@ describe('should work babel transform', () => {
 
   test('fn expr jsx', () => {
     const code = `const a = function a(p) { return <h1 /> }`;
-    const expected = `const a = function a(p) {\n  return <h1 />;\n};`;
+    const expected = `const a = ${decorator_fn_name}(function a(p) {\n  return <h1 />;\n});`;
     expect(transform(code)).toBe(expected);
   });
 
@@ -69,7 +69,7 @@ describe('should work babel transform', () => {
 
   test('fn expr jsx no args', () => {
     const code = `const a = function() { return <h1 /> }`;
-    const expected = `const a = function () {\n  return <h1 />;\n};`;
+    const expected = `const a = ${decorator_fn_name}(function () {\n  return <h1 />;\n});`;
     expect(transform(code)).toBe(expected);
   });
 
