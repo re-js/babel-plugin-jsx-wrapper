@@ -8,7 +8,10 @@ function plugin() {
     },
     visitor: {
       'JSXElement|JSXFragment'(path, state) {
-        const { decorator } = state.opts || {};
+        const { decorator, include, exclude, root } = state.opts || {};
+
+        // TODO: add logic for include, exclude and root options
+
         view_transform(path, decorator);
       },
     },
