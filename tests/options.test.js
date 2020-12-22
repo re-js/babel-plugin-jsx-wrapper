@@ -7,7 +7,7 @@ function transform(code, { decorator, filename, include, exclude, root }) {
     plugins: [[plugin, { decorator, include, exclude, root }]],
     code: true,
     ast: false,
-    filename
+    filename,
   }).code;
 }
 
@@ -21,19 +21,32 @@ test('should work include option', () => {
   const code = `const a = p => <h1 />;`;
   const decorated = `const a = K(p => <h1 />);`;
   expect(transform(code, { include: ['src/*'], filename: __filename })).toBe(code);
-  expect(transform(code, { include: ['src/*', 'tests/*'], filename: __filename, decorator: 'K' })).toBe(decorated);
+  expect(
+    transform(code, { include: ['src/*', 'tests/*'], filename: __filename, decorator: 'K' })
+  ).toBe(decorated);
 });
 
 test('should work exclude option', () => {
   const code = `const a = p => <h1 />;`;
   const decorated = `const a = K(p => <h1 />);`;
   expect(transform(code, { exclude: ['tests/*'], filename: __filename })).toBe(code);
-  expect(transform(code, { exclude: ['tests/*'], include: ['tests/*'], filename: __filename, decorator: 'K' })).toBe(decorated);
-  expect(transform(code, { exclude: ['src/*'], filename: __filename, decorator: 'K' })).toBe(decorated);
+  expect(
+    transform(code, {
+      exclude: ['tests/*'],
+      include: ['tests/*'],
+      filename: __filename,
+      decorator: 'K',
+    })
+  ).toBe(decorated);
+  expect(transform(code, { exclude: ['src/*'], filename: __filename, decorator: 'K' })).toBe(
+    decorated
+  );
 });
 
 test('should work root option', () => {
   const code = `const a = p => <h1 />;`;
   const decorated = `const a = K(p => <h1 />);`;
-  expect(transform(code, { root: __dirname, exclude: ["src/*"], filename: __filename, decorator: 'K' })).toBe(decorated);
+  expect(
+    transform(code, { root: __dirname, exclude: ['src/*'], filename: __filename, decorator: 'K' })
+  ).toBe(decorated);
 });
