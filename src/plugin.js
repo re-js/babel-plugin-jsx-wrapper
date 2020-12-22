@@ -1,3 +1,4 @@
+const { is_allowed } = require('./is-allowed');
 const { view_transform } = require('./view-transform');
 
 function plugin() {
@@ -8,11 +9,9 @@ function plugin() {
     },
     visitor: {
       'JSXElement|JSXFragment'(path, state) {
-        const { decorator, include, exclude, root } = state.opts || {};
-
-        // TODO: add logic for include, exclude and root options
-
-        view_transform(path, decorator);
+        if (is_allowed(state)) {
+          view_transform(path, (state.opts || {}).decorator);
+        }
       },
     },
   };

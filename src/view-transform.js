@@ -78,7 +78,8 @@ function view_transform(path, decorator_fn_name = default_decorator_fn_name) {
   // Already wrapped
   if (types.isCallExpression(cursor_path.parent)) return;
 
-  const decorated = template(`${decorator_fn_name}(BODY)`)({
+  const decorated = template(`NAME(BODY)`)({
+    NAME: decorator_fn_name,
     BODY: cursor,
   });
   cursor_path.replaceWith(decorated);
