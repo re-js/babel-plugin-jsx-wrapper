@@ -1,6 +1,6 @@
 # babel-plugin-realar
 
-[![npm version](https://img.shields.io/npm/v/babel-plugin-realar?style=flat-square)](https://www.npmjs.com/package/babel-plugin-realar) [![code coverage](https://img.shields.io/coveralls/github/betula/babel-plugin-realar?style=flat-square)](https://coveralls.io/github/betula/babel-plugin-realar)
+[![npm version](https://img.shields.io/npm/v/babel-plugin-realar?style=flat-square)](https://www.npmjs.com/package/babel-plugin-realar) [![code coverage](https://img.shields.io/coveralls/github/betula/babel-plugin-realar?style=flat-square)](https://coveralls.io/github/betula/babel-plugin-realar) [![npm downloads](https://img.shields.io/npm/dt/babel-plugin-realar?style=flat-square)](https://www.npmjs.com/package/babel-plugin-realar)
 
 Automatic observe jsx arrow functions for [Realar](https://github.com/betula/realar) for smartify and purify your code :+1:
 
