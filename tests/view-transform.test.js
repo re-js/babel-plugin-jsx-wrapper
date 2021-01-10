@@ -1,8 +1,7 @@
 const babel = require('@babel/core');
 const plugin = require('../src/plugin');
-const { default_decorator_fn_name } = require('../src/view-transform');
 
-const decorator_fn_name = default_decorator_fn_name;
+const decorator_fn_name = 'require("react").memo(require("realar").observe';
 
 function transform(code) {
   return babel.transform(code, {
@@ -15,13 +14,13 @@ function transform(code) {
 describe('should work babel transform', () => {
   test('arrow jsx with args', () => {
     const code = `const a = (p) => <h1 />`;
-    const expected = `const a = ${decorator_fn_name}(p => <h1 />);`;
+    const expected = `const a = ${decorator_fn_name}(p => <h1 />));`;
     expect(transform(code)).toBe(expected);
   });
 
   test('arrow jsx no args', () => {
     const code = `const a = () => <h1 />`;
-    const expected = `const a = ${decorator_fn_name}(() => <h1 />);`;
+    const expected = `const a = ${decorator_fn_name}(() => <h1 />));`;
     expect(transform(code)).toBe(expected);
   });
 
@@ -39,13 +38,13 @@ describe('should work babel transform', () => {
 
   test('block arrow jsx with args', () => {
     const code = `const a = (p) => { return <h1 /> }`;
-    const expected = `const a = ${decorator_fn_name}(p => {\n  return <h1 />;\n});`;
+    const expected = `const a = ${decorator_fn_name}(p => {\n  return <h1 />;\n}));`;
     expect(transform(code)).toBe(expected);
   });
 
   test('block arrow jsx no args', () => {
     const code = `const a = () => { return <h1 /> }`;
-    const expected = `const a = ${decorator_fn_name}(() => {\n  return <h1 />;\n});`;
+    const expected = `const a = ${decorator_fn_name}(() => {\n  return <h1 />;\n}));`;
     expect(transform(code)).toBe(expected);
   });
 
@@ -57,7 +56,7 @@ describe('should work babel transform', () => {
 
   test('fn expr jsx', () => {
     const code = `const a = function a(p) { return <h1 /> }`;
-    const expected = `const a = ${decorator_fn_name}(function a(p) {\n  return <h1 />;\n});`;
+    const expected = `const a = ${decorator_fn_name}(function a(p) {\n  return <h1 />;\n}));`;
     expect(transform(code)).toBe(expected);
   });
 
@@ -69,7 +68,7 @@ describe('should work babel transform', () => {
 
   test('fn expr jsx no args', () => {
     const code = `const a = function() { return <h1 /> }`;
-    const expected = `const a = ${decorator_fn_name}(function () {\n  return <h1 />;\n});`;
+    const expected = `const a = ${decorator_fn_name}(function () {\n  return <h1 />;\n}));`;
     expect(transform(code)).toBe(expected);
   });
 

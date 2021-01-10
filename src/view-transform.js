@@ -1,13 +1,10 @@
 const { types, template, traverse } = require('@babel/core');
 
-const default_decorator_fn_name = 'require("realar").observe';
-
 module.exports = {
-  default_decorator_fn_name,
   view_transform,
 };
 
-function view_transform(path, decorator_fn_name = default_decorator_fn_name) {
+function view_transform(path, opts = {}) {
   let cursor = path;
   let cursor_path;
 
@@ -78,7 +75,12 @@ function view_transform(path, decorator_fn_name = default_decorator_fn_name) {
   // Already wrapped
   if (types.isCallExpression(cursor_path.parent)) return;
 
-  const decorated = template(`${decorator_fn_name}(BODY)`)({
+  let tpl = `${opts.decorator || 'require("realar").observe'}(BODY)`;
+  if ((!opts.decorator && opts.memo !== false) || opts.memo === true) {
+    tpl = `require("react").memo(${tpl})`;
+  }
+
+  const decorated = template(tpl)({
     BODY: cursor,
   });
   cursor_path.replaceWith(decorated);

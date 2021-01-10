@@ -10,7 +10,7 @@ function plugin() {
     visitor: {
       'JSXElement|JSXFragment'(path, state) {
         if (is_allowed(state)) {
-          view_transform(path, (state.opts || {}).decorator);
+          view_transform(path, state.opts);
         }
       },
     },

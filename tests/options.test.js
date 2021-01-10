@@ -1,10 +1,9 @@
-const path = require('path');
 const babel = require('@babel/core');
 const plugin = require('../src/plugin');
 
-function transform(code, { decorator, filename, include, exclude, root }) {
+function transform(code, { decorator, filename, include, exclude, root, memo }) {
   return babel.transform(code, {
-    plugins: [[plugin, { decorator, include, exclude, root }]],
+    plugins: [[plugin, { decorator, include, exclude, root, memo }]],
     code: true,
     ast: false,
     filename,
@@ -48,5 +47,21 @@ test('should work root option', () => {
   const decorated = `const a = k(p => <h1 />);`;
   expect(
     transform(code, { root: __dirname, exclude: ['src/*'], filename: __filename, decorator: 'k' })
+  ).toBe(decorated);
+});
+
+test('should work switch on memo option', () => {
+  const code = `const a = p => <h1 />;`;
+  const decorated = `const a = require("react").memo(k(p => <h1 />));`;
+  expect(
+    transform(code, { filename: __filename, decorator: 'k', memo: true })
+  ).toBe(decorated);
+});
+
+test('should work switch off memo option', () => {
+  const code = `const a = p => <h1 />;`;
+  const decorated = `const a = require("realar").observe(p => <h1 />);`;
+  expect(
+    transform(code, { filename: __filename, memo: false })
   ).toBe(decorated);
 });
