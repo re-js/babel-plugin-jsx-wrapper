@@ -57,9 +57,9 @@ module.exports = {
 
 **root** - string that provide root path for "exclude" and "include" options.
 
-**memo** - boolean flag. Wrap all react arrow function React component to `React.memo`. If "decorator" property is not used will be true by default.
+**memo** - boolean flag. Wrap all react arrow function React component to `React.memo`. If "decorator" property is not used will be `true` by default.
 
-**decorator** - function name that used instead of `observe` function from Realar. (For example: "require('mobx').observer")
+**decorator** - function name that used instead of `observe` function from Realar. (_For example: "require('mobx').observer"_)
 
 ### Installation
 
