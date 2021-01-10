@@ -49,7 +49,7 @@ module.exports = {
         "src/components/*",
         "src/pages/*"
       ],
-      "exclude": ["node_modules/*"]
+      // "exclude": ["node_modules/*"]
     }]
   ]
 };
