@@ -7,7 +7,7 @@ Automatic observe jsx arrow functions for [Realar](https://github.com/betula/rea
 That plugin for babel wraps all not wrapped arrow functions (that contains JSX) to Realar `observe` function. Less code more effectivity!
 
 ```javascript
-import React from 'react';
+import React, { /* memo */ } from 'react';
 import { box, shared, /* observe */ } from 'realar';
 
 class Ticker {
@@ -17,7 +17,7 @@ class Ticker {
 
 const sharedTicker = () => shared(Ticker);
 
-// const App = observe(() => {
+// const App = memo(observe(() => {
 const App = () => {
   const { value, next } = sharedTicker();
   return (
@@ -30,7 +30,7 @@ const App = () => {
 };
 ```
 
-[See wrapped version of it on CodeSandbox](https://codesandbox.io/s/realar-jsx-observe-example-5f2k2?file=/src/App.tsx).
+[See wrapped version on CodeSandbox](https://codesandbox.io/s/realar-jsx-observe-example-5f2k2?file=/src/App.tsx).
 
 You are no need more to wrap (decorate) JSX components to `observe` function! It will be automatic.
 
