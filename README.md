@@ -34,6 +34,32 @@ const App = () => {
 
 You are no need more to wrap (decorate) JSX components to `observe` function! It will be automatic.
 
+### Options
+
+**exclude** - array of [matcher](https://www.npmjs.com/package/matcher) patterns that needs to exclude.
+
+**include** - array of [matcher](https://www.npmjs.com/package/matcher) patterns that need to include, other ones will be excluded.
+
+```javascript
+module.exports = {
+  "plugins": [
+    ["realar", {
+      "include": [
+        "src/components/*",
+        "src/pages/*"
+      ],
+      "exclude": ["node_modules/*"]
+    }]
+  ]
+};
+```
+
+**root** - string that provide root path for "exclude" and "include" options.
+
+**memo** - boolean flag. Wrap all react arrow function React component to `React.memo`. If "decorator" property is not used will be true by default.
+
+**decorator** - function name that used instead of `observe` function from Realar. (For example: "require('my-package').jsxWrapper")
+
 ### Installation
 
 ```bash
