@@ -41,6 +41,7 @@ You are no need more to wrap (decorate) JSX components to `observe` function! It
 **include** - array of [matcher](https://www.npmjs.com/package/matcher) patterns that need to include, other ones will be excluded.
 
 ```javascript
+// .babelrc.js
 module.exports = {
   "plugins": [
     ["realar", {
@@ -58,7 +59,7 @@ module.exports = {
 
 **memo** - boolean flag. Wrap all react arrow function React component to `React.memo`. If "decorator" property is not used will be true by default.
 
-**decorator** - function name that used instead of `observe` function from Realar. (For example: "require('my-package').jsxWrapper")
+**decorator** - function name that used instead of `observe` function from Realar. (For example: "require('mobx').observer")
 
 ### Installation
 
