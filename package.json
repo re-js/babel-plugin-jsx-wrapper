@@ -18,7 +18,8 @@
     "@babel/core": "*"
   },
   "optionalDependencies": {
-    "realar": ">=0.3.0"
+    "realar": ">=0.3.0",
+    "react": ">=16.6.0"
   },
   "devDependencies": {
     "@babel/core": "7.12.10",
