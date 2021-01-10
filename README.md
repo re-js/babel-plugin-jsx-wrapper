@@ -2,9 +2,9 @@
 
 [![npm version](https://img.shields.io/npm/v/babel-plugin-realar?style=flat-square)](https://www.npmjs.com/package/babel-plugin-realar) [![code coverage](https://img.shields.io/coveralls/github/betula/babel-plugin-realar?style=flat-square)](https://coveralls.io/github/betula/babel-plugin-realar)
 
-Automatic observe jsx arrow functions for [Realar](https://github.com/betula/realar) for smartify and purify your code :+1:
+Automatic observe jsx arrow functions for smartify and purify your code :+1:
 
-That plugin for babel wraps all not wrapped arrow functions (that contains JSX) to Realar `observe` function. Less code more effectivity!
+That plugin for babel wraps all not wrapped arrow functions (that contains JSX) to [Realar](https://github.com/betula/realar) `observe` function (_but possible for configure to custom one_). Less code more effectiveness!
 
 ```javascript
 import React, { /* memo */ } from 'react';
@@ -61,7 +61,7 @@ module.exports = {
 
 **decorator** - function name that used instead of `observe` function from Realar. (_For example: "require('mobx').observer"_)
 
-### Installation
+### Install
 
 ```bash
 npm i --save-dev babel-plugin-realar
