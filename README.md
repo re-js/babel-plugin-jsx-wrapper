@@ -64,7 +64,7 @@ module.exports = {
 ### Installation
 
 ```bash
-npm install --save-dev babel-plugin-realar
+npm i --save-dev babel-plugin-realar
 # or
 yarn add babel-plugin-realar
 ```
