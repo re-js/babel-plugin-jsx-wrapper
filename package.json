@@ -43,7 +43,12 @@
     "babel",
     "transform",
     "jsx",
-    "react"
+    "react",
+    "mobx",
+    "mobx react",
+    "mobx react lite",
+    "mobx auto observer",
+    "mobx react automatic observer"
   ],
   "author": "Slava Birch <mail@betula.co>",
   "license": "MIT",

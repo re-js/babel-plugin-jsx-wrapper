@@ -4,37 +4,9 @@
 
 Automatic observe jsx arrow functions for smartify and purify your code :+1:
 
-That plugin for babel wraps all not wrapped arrow functions (that contains JSX) to [Realar](https://github.com/betula/realar) `observe` function (_but possible for configure to mobx, mobx-lite or custom one_). Less code more effectiveness!
+That plugin for babel wraps all not wrapped arrow functions (that contains JSX) to wrapper function with easy configuring [Mobx](https://github.com/mobxjs/mobx) and [Realar](https://github.com/betula/realar) (_but possible for configure to custom one_). Less code more effectiveness!
 
-```javascript
-import React from 'react';
-import { box, shared, /* observe */ } from 'realar';
-
-class Ticker {
-  @box value = 0;
-  next = () => this.value += 1;
-}
-
-const sharedTicker = () => shared(Ticker);
-
-// const App = observe(() => {
-const App = () => {
-  const { value, next } = sharedTicker();
-  return (
-    <>
-      Ticker: {value}
-      <br />
-      <button onClick={next}>Next</button>
-    </>
-  );
-};
-```
-
-[See wrapped version on CodeSandbox](https://codesandbox.io/s/realar-jsx-observe-example-5f2k2?file=/src/App.tsx).
-
-You are no need more to wrap (decorate) JSX components to `observe` function! It will be automatic.
-
-#### Configuration for Mobx
+### Mobx
 
 ```javascript
 import React from 'react';
@@ -75,6 +47,35 @@ module.exports = {
 };
 ```
 
+### Realar
+
+```javascript
+import React from 'react';
+import { prop, shared, /* observe */ } from 'realar';
+
+class Ticker {
+  @prop value = 0;
+  next = () => this.value += 1;
+}
+
+const sharedTicker = () => shared(Ticker);
+
+// const App = observe(() => {
+const App = () => {
+  const { value, next } = sharedTicker();
+  return (
+    <>
+      Ticker: {value}
+      <br />
+      <button onClick={next}>Next</button>
+    </>
+  );
+};
+```
+
+[See wrapped version on CodeSandbox](https://codesandbox.io/s/realar-jsx-observe-example-5f2k2?file=/src/App.tsx).
+
+You are no need more to wrap (decorate) JSX components to `observe` function! It will be automatic.
 
 ### Options
 
