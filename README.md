@@ -11,7 +11,7 @@ That plugin for babel wraps all not wrapped arrow functions (that contains JSX) 
 ```javascript
 import React from 'react';
 import { makeAutoObservable } from 'mobx';
-import { /* observer */ } from 'mobx-react';
+/* import { observer } from 'mobx-react'; */
 
 class Ticker {
   value = 0;
