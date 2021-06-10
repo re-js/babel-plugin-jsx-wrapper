@@ -4,7 +4,7 @@
 
 Automatic observe jsx arrow functions for smartify and purify your code :+1:
 
-That plugin for babel wraps all not wrapped arrow functions (that contains JSX) to wrapper function with easy configuring [Mobx](https://github.com/mobxjs/mobx) and [Realar](https://github.com/betula/realar) (_but possible for configure to custom one_). Less code more effectiveness!
+That plugin for babel wraps all not wrapped arrow functions (that contains JSX and defined in file global scope) to wrapper function with easy configuring [Mobx](https://github.com/mobxjs/mobx) and [Realar](https://github.com/betula/realar) (_but possible for configure to custom one_). Less code more effectiveness!
 
 ### Mobx
 
