@@ -77,6 +77,15 @@ const App = () => {
 
 You are no need more to wrap (decorate) JSX components to `observe` function! It will be automatic.
 
+```javascript
+// .babelrc.js
+module.exports = {
+  "plugins": [
+    "jsx-wrapper" // by default "realar"
+  ]
+};
+```
+
 ### Options
 
 **exclude** - array of [matcher](https://www.npmjs.com/package/matcher) patterns that needs to exclude.
