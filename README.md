@@ -1,13 +1,13 @@
-# babel-plugin-realar
+# babel-plugin-jsx-wrapper
 
-[![npm version](https://img.shields.io/npm/v/babel-plugin-realar?style=flat-square)](https://www.npmjs.com/package/babel-plugin-realar) [![code coverage](https://img.shields.io/coveralls/github/betula/babel-plugin-realar?style=flat-square)](https://coveralls.io/github/betula/babel-plugin-realar)
+[![npm version](https://img.shields.io/npm/v/babel-plugin-jsx-wrapper?style=flat-square)](https://www.npmjs.com/package/babel-plugin-jsx-wrapper) [![code coverage](https://img.shields.io/coveralls/github/betula/babel-plugin-jsx-wrapper?style=flat-square)](https://coveralls.io/github/betula/babel-plugin-jsx-wrapper)
 
 Automatic observe jsx arrow functions for smartify and purify your code :+1:
 
-That plugin for babel wraps all not wrapped arrow functions (that contains JSX) to [Realar](https://github.com/betula/realar) `observe` function (_but possible for configure to custom one_). Less code more effectiveness!
+That plugin for babel wraps all not wrapped arrow functions (that contains JSX) to [Realar](https://github.com/betula/realar) `observe` function (_but possible for configure to mobx, mobx-lite or custom one_). Less code more effectiveness!
 
 ```javascript
-import React, { /* memo */ } from 'react';
+import React from 'react';
 import { box, shared, /* observe */ } from 'realar';
 
 class Ticker {
@@ -17,7 +17,7 @@ class Ticker {
 
 const sharedTicker = () => shared(Ticker);
 
-// const App = memo(observe(() => {
+// const App = observe(() => {
 const App = () => {
   const { value, next } = sharedTicker();
   return (
@@ -34,6 +34,48 @@ const App = () => {
 
 You are no need more to wrap (decorate) JSX components to `observe` function! It will be automatic.
 
+#### Configuration for Mobx
+
+```javascript
+import React from 'react';
+import { makeAutoObservable } from 'mobx';
+import { /* observer */ } from 'mobx-react';
+
+class Ticker {
+  value = 0;
+  next = () => this.value += 1;
+
+  constructor() {
+    makeAutoObservable(this);
+  }
+}
+
+const ticker = new Ticker();
+
+// const App = observer(() => (
+const App = () => (
+  <>
+    Ticker: {ticker.value}
+    <br />
+    <button onClick={() => ticker.next()}>Next</button>
+  </>
+);
+```
+
+[See wrapped version on CodeSandbox](https://codesandbox.io/s/babel-plugin-jsx-wrapper-mobx-example-q7en9).
+
+```javascript
+// .babelrc.js
+module.exports = {
+  "plugins": [
+    ["jsx-wrapper", {
+      "decorator": "mobx" // or possible value "mobx-lite", by default "realar"
+    }]
+  ]
+};
+```
+
+
 ### Options
 
 **exclude** - array of [matcher](https://www.npmjs.com/package/matcher) patterns that needs to exclude.
@@ -44,7 +86,7 @@ You are no need more to wrap (decorate) JSX components to `observe` function! It
 // .babelrc.js
 module.exports = {
   "plugins": [
-    ["realar", {
+    ["jsx-wrapper", {
       "include": [
         "src/components/*",
         "src/pages/*"
@@ -57,16 +99,16 @@ module.exports = {
 
 **root** - string that provide root path for "exclude" and "include" options.
 
-**memo** - boolean flag. Wrap all react arrow function React component to `React.memo`. If "decorator" property is not used will be `true` by default.
+**memo** - boolean flag. Wrap all arrow function React component to `React.memo`. `false` by default.
 
-**decorator** - function name that used instead of `observe` function from Realar. (_For example: "require('mobx').observer"_)
+**decorator** - function name that used instead of `observe` function from Realar. (_For example: "require('mobx-react').observer"_) Or name of presetted vendor: "mobx", "mobx-lite", "realar" (by default).
 
 ### Install
 
 ```bash
-npm i --save-dev babel-plugin-realar
+npm i --save-dev babel-plugin-jsx-wrapper
 # or
-yarn add babel-plugin-realar
+yarn add babel-plugin-jsx-wrapper
 ```
 
 And update your babel config:
@@ -75,7 +117,7 @@ And update your babel config:
 // .babelrc
 {
   "plugins": [
-    "realar"
+    "jsx-wrapper"
   ]
 }
 ```

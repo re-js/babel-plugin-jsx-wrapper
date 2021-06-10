@@ -75,8 +75,22 @@ function view_transform(path, opts = {}) {
   // Already wrapped
   if (types.isCallExpression(cursor_path.parent)) return;
 
-  let tpl = `${opts.decorator || 'require("realar").observe'}(BODY)`;
-  if ((!opts.decorator && opts.memo !== false) || opts.memo === true) {
+  let decor = 'require("realar").observe';
+  switch (opts.decorator) {
+    case 'mobx':
+      decor = 'require("mobx-react").observer';
+      break;
+    case 'mobx-lite':
+      decor = 'require("mobx-react-lite").observer';
+      break;
+    case 'realar':
+      break;
+    default:
+      decor = opts.decorator || decor;
+  }
+
+  let tpl = `${decor}(BODY)`;
+  if (opts.memo) {
     tpl = `require("react").memo(${tpl})`;
   }
 

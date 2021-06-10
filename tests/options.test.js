@@ -16,6 +16,24 @@ test('should work decorator option', () => {
   expect(transform(code, { decorator: 'k' })).toBe(expected);
 });
 
+test('should work mobx decorator option', () => {
+  const code = `const a = (p) => <h1 />`;
+  const expected = `const a = require("mobx-react").observer(p => <h1 />);`;
+  expect(transform(code, { decorator: 'mobx' })).toBe(expected);
+});
+
+test('should work mobx-lite decorator option', () => {
+  const code = `const a = (p) => <h1 />`;
+  const expected = `const a = require("mobx-react-lite").observer(p => <h1 />);`;
+  expect(transform(code, { decorator: 'mobx-lite' })).toBe(expected);
+});
+
+test('should work realar decorator option', () => {
+  const code = `const a = (p) => <h1 />`;
+  const expected = `const a = require("realar").observe(p => <h1 />);`;
+  expect(transform(code, { decorator: 'realar' })).toBe(expected);
+});
+
 test('should work include option', () => {
   const code = `const a = p => <h1 />;`;
   const decorated = `const a = k(p => <h1 />);`;
