@@ -60,6 +60,7 @@ function view_transform(path, opts = {}) {
   }
 
   if (!last_fn) return;
+
   cursor = last_fn;
   cursor_path = last_fn_path;
 
@@ -74,6 +75,7 @@ function view_transform(path, opts = {}) {
 
   // Already wrapped
   if (types.isCallExpression(cursor_path.parent)) return;
+  if (types.isJSXExpressionContainer(cursor_path.parent)) return;
 
   let decor = 'require("realar").observe';
   switch (opts.decorator) {
