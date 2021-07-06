@@ -3,7 +3,7 @@ const { view_transform } = require('./view-transform');
 
 function plugin() {
   return {
-    name: 'babel-plugin-realar',
+    name: 'babel-plugin-jsx-wrapper',
     manipulateOptions(_opts, parserOpts) {
       parserOpts.plugins.push('jsx');
     },
