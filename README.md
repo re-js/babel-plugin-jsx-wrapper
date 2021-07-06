@@ -127,7 +127,9 @@ And update your babel config:
 // .babelrc
 {
   "plugins": [
-    "jsx-wrapper"
+    ["jsx-wrapper", {
+      "decorator": "mobx" // by default "realar"
+    }]
   ]
 }
 ```
