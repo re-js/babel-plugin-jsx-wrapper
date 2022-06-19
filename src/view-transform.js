@@ -99,8 +99,12 @@ function view_transform(path, opts = {}) {
     case 'mobx-lite':
       decor = 'require("mobx-react-lite").observer';
       break;
+    case 'remini-react':
     case 'remini':
-      decor = 'require("remini").observe';
+      decor = 'require("remini/react").observe';
+      break;
+    case 'remini-preact':
+      decor = 'require("remini/preact").observe';
       break;
     case 'realar':
       break;

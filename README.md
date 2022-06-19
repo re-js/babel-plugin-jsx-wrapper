@@ -4,7 +4,7 @@
 
 Automatic observe jsx arrow functions for smartify and purify your code :+1:
 
-That plugin for babel wraps all not wrapped arrow functions (that contains JSX and defined in file global scope) to wrapper function with easy configuring [Mobx](https://github.com/mobxjs/mobx) and [Realar](https://github.com/betula/realar) (_but possible for configure to custom one_). Less code more effectiveness!
+That plugin for babel wraps all not wrapped arrow functions (that contains JSX and defined in file global scope) to wrapper function with easy configuring [Mobx](https://github.com/mobxjs/mobx), [Realar](https://github.com/betula/realar), and [Remini](https://github.com/betula/remini) (_but possible for configure to custom one_). Less code more effectiveness!
 
 ### Mobx
 
@@ -41,7 +41,7 @@ const App = () => (
 module.exports = {
   "plugins": [
     ["jsx-wrapper", {
-      "decorator": "mobx" // or possible value "mobx-lite", "remini", by default "realar"
+      "decorator": "mobx" // or possible value "mobx-lite", "remini-react", "remini-preact", by default "realar"
     }]
   ]
 };
@@ -113,7 +113,7 @@ module.exports = {
 
 **memo** - boolean flag. Wrap all arrow function React component to `React.memo`. `false` by default.
 
-**decorator** - function name that used instead of `observe` function from Realar. (_For example: "require('mobx-preact').observer"_) Or name of presetted vendor: "mobx", "mobx-lite", "remini", and "realar" (by default).
+**decorator** - function name that used instead of `observe` function from Realar. (_For example: "require('mobx-preact').observer"_) Or name of presetted vendor: "mobx", "mobx-lite", "remini-react", "remini-preact", and "realar" (by default).
 
 
 ### Install
@@ -131,7 +131,7 @@ And update your babel config:
 {
   "plugins": [
     ["jsx-wrapper", {
-      "decorator": "mobx" // or "remini", by default "realar"
+      "decorator": "mobx" // or "remini-react", "remini-preact", by default "realar"
     }]
   ]
 }
