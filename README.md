@@ -88,6 +88,8 @@ module.exports = {
 
 ### Options
 
+**ucfirst** - boolean flag. Wrap only if first letter of the function name is uppercased. `false` by default.
+
 **exclude** - array of [matcher](https://www.npmjs.com/package/matcher) patterns that needs to exclude.
 
 **include** - array of [matcher](https://www.npmjs.com/package/matcher) patterns that need to include, other ones will be excluded.
@@ -111,9 +113,8 @@ module.exports = {
 
 **memo** - boolean flag. Wrap all arrow function React component to `React.memo`. `false` by default.
 
-**decorator** - function name that used instead of `observe` function from Realar. (_For example: "require('mobx-react').observer"_) Or name of presetted vendor: "mobx", "mobx-lite", "realar" (by default).
+**decorator** - function name that used instead of `observe` function from Realar. (_For example: "require('mobx-preact').observer"_) Or name of presetted vendor: "mobx", "mobx-lite", "remini", and "realar" (by default).
 
-**ucfirst** - boolean flag. Wrap only if first letter of the function name is uppercased. `false` by default.
 
 ### Install
 

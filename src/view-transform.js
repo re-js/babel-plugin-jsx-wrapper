@@ -99,6 +99,9 @@ function view_transform(path, opts = {}) {
     case 'mobx-lite':
       decor = 'require("mobx-react-lite").observer';
       break;
+    case 'remini':
+      decor = 'require("remini").observe';
+      break;
     case 'realar':
       break;
     default:
