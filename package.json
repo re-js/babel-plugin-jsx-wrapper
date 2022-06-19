@@ -50,7 +50,7 @@
     "mobx auto observer",
     "mobx react automatic observer"
   ],
-  "author": "Slava Birch <mail@betula.co>",
+  "author": "Slava Bereza <mail@betula.co>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/betula/babel-plugin-jsx-wrapper/issues"
