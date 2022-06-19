@@ -41,7 +41,7 @@ const App = () => (
 module.exports = {
   "plugins": [
     ["jsx-wrapper", {
-      "decorator": "mobx" // or possible value "mobx-lite", by default "realar"
+      "decorator": "mobx" // or possible value "mobx-lite", "remini", by default "realar"
     }]
   ]
 };
@@ -131,7 +131,7 @@ And update your babel config:
 {
   "plugins": [
     ["jsx-wrapper", {
-      "decorator": "mobx" // by default "realar"
+      "decorator": "mobx" // or "remini", by default "realar"
     }]
   ]
 }
