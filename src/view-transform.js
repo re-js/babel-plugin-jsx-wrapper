@@ -77,6 +77,20 @@ function view_transform(path, opts = {}) {
   if (types.isCallExpression(cursor_path.parent)) return;
   if (types.isJSXExpressionContainer(cursor_path.parent)) return;
 
+  if (opts.ucfirst) {
+    // Check if first letter of function name is uppercased
+    if (types.isVariableDeclarator(cursor_path.parent)) {
+      if (cursor_path.parent.id && !/^[A-Z]/.test(cursor_path.parent.id.name)) {
+        return;
+      }
+    }
+    if (types.isAssignmentExpression(cursor_path.parent)) {
+      if (cursor_path.parent.left && !/^[A-Z]/.test(cursor_path.parent.left.name)) {
+        return;
+      }
+    }
+  }
+
   let decor = 'require("realar").observe';
   switch (opts.decorator) {
     case 'mobx':

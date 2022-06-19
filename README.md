@@ -113,6 +113,8 @@ module.exports = {
 
 **decorator** - function name that used instead of `observe` function from Realar. (_For example: "require('mobx-react').observer"_) Or name of presetted vendor: "mobx", "mobx-lite", "realar" (by default).
 
+**ucfirst** - boolean flag. Wrap only if first letter of the function name is uppercased. `false` by default.
+
 ### Install
 
 ```bash

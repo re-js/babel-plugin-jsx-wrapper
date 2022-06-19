@@ -1,9 +1,9 @@
 const babel = require('@babel/core');
 const plugin = require('../src/plugin');
 
-function transform(code, { decorator, filename, include, exclude, root, memo }) {
+function transform(code, { decorator, filename, include, exclude, root, memo, ucfirst }) {
   return babel.transform(code, {
-    plugins: [[plugin, { decorator, include, exclude, root, memo }]],
+    plugins: [[plugin, { decorator, include, exclude, root, memo, ucfirst }]],
     code: true,
     ast: false,
     filename,
@@ -82,4 +82,16 @@ test('should work switch off memo option', () => {
   expect(
     transform(code, { filename: __filename, memo: false })
   ).toBe(decorated);
+});
+
+test('should work ucfirst option with no transform usually', () => {
+  const code = `const a = (p) => <h1 />`;
+  const expected = `const a = p => <h1 />;`;
+  expect(transform(code, { decorator: 'k', ucfirst: true })).toBe(expected);
+});
+
+test('should work ucfirst option with transform only if uppercase first letter in name', () => {
+  const code = `const Abc = (p) => <h1 />`;
+  const expected = `const Abc = k(p => <h1 />);`;
+  expect(transform(code, { decorator: 'k', ucfirst: true })).toBe(expected);
 });
