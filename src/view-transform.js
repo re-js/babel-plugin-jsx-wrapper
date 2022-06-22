@@ -91,12 +91,14 @@ function view_transform(path, opts = {}) {
     }
   }
 
-  let decor = 'require("realar").observe';
+  let decor = '';
   switch (opts.decorator) {
     case 'mobx':
+    case 'mobx-react':
       decor = 'require("mobx-react").observer';
       break;
     case 'mobx-lite':
+    case 'mobx-react-lite':
       decor = 'require("mobx-react-lite").observer';
       break;
     case 'remini-react':
@@ -106,16 +108,19 @@ function view_transform(path, opts = {}) {
     case 'remini-preact':
       decor = 'require("remini/preact").observe';
       break;
-    case 'realar':
-      break;
     default:
       decor = opts.decorator || decor;
   }
 
-  let tpl = `${decor}(BODY)`;
+  let tpl = decor
+    ? `${decor}(BODY)`
+    : 'BODY';
+
   if (opts.memo) {
     tpl = `require("react").memo(${tpl})`;
   }
+
+  if (tpl === 'BODY') return;
 
   const decorated = template(tpl)({
     BODY: cursor,

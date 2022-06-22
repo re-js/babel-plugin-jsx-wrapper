@@ -22,16 +22,28 @@ test('should work mobx decorator option', () => {
   expect(transform(code, { decorator: 'mobx' })).toBe(expected);
 });
 
+test('should work mobx-react decorator option', () => {
+  const code = `const a = (p) => <h1 />`;
+  const expected = `const a = require("mobx-react").observer(p => <h1 />);`;
+  expect(transform(code, { decorator: 'mobx-react' })).toBe(expected);
+});
+
 test('should work mobx-lite decorator option', () => {
   const code = `const a = (p) => <h1 />`;
   const expected = `const a = require("mobx-react-lite").observer(p => <h1 />);`;
   expect(transform(code, { decorator: 'mobx-lite' })).toBe(expected);
 });
 
-test('should work realar decorator option', () => {
+test('should work mobx-react-lite decorator option', () => {
   const code = `const a = (p) => <h1 />`;
-  const expected = `const a = require("realar").observe(p => <h1 />);`;
-  expect(transform(code, { decorator: 'realar' })).toBe(expected);
+  const expected = `const a = require("mobx-react-lite").observer(p => <h1 />);`;
+  expect(transform(code, { decorator: 'mobx-react-lite' })).toBe(expected);
+});
+
+test('should work without decorator option', () => {
+  const code = `const a = (p) => <h1 />`;
+  const expected = `const a = p => <h1 />;`;
+  expect(transform(code, {})).toBe(expected);
 });
 
 test('should work remini decorator option', () => {
@@ -86,7 +98,7 @@ test('should work root option', () => {
   ).toBe(decorated);
 });
 
-test('should work switch on memo option', () => {
+test('should work switch on memo option with decorator', () => {
   const code = `const a = p => <h1 />;`;
   const decorated = `const a = require("react").memo(k(p => <h1 />));`;
   expect(
@@ -94,11 +106,11 @@ test('should work switch on memo option', () => {
   ).toBe(decorated);
 });
 
-test('should work switch off memo option', () => {
+test('should work switch on memo option without decorator', () => {
   const code = `const a = p => <h1 />;`;
-  const decorated = `const a = require("realar").observe(p => <h1 />);`;
+  const decorated = `const a = require("react").memo(p => <h1 />);`;
   expect(
-    transform(code, { filename: __filename, memo: false })
+    transform(code, { filename: __filename, memo: true })
   ).toBe(decorated);
 });
 

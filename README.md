@@ -4,14 +4,13 @@
 
 Automatic observe jsx arrow functions for smartify and purify your code :+1:
 
-That plugin for babel wraps all not wrapped arrow functions (that contains JSX and defined in file global scope) to wrapper function with easy configuring [Mobx](https://github.com/mobxjs/mobx), [Realar](https://github.com/betula/realar), and [Remini](https://github.com/betula/remini) (_but possible for configure to custom one_). Less code more effectiveness!
+That plugin for babel wraps all not wrapped arrow functions (that contains JSX and defined in file global scope) to wrapper function with easy configuring [Mobx](https://github.com/mobxjs/mobx) and [Remini](https://github.com/betula/remini) (_but possible for configure to custom one_). Less code more effectiveness!
 
 ### Mobx
 
 ```javascript
-import React from 'react';
 import { makeAutoObservable } from 'mobx';
-/* import { observer } from 'mobx-react'; */
+/* import { observer } from 'mobx-react-lite'; */
 
 class Ticker {
   value = 0;
@@ -29,7 +28,7 @@ const App = () => (
   <>
     Ticker: {ticker.value}
     <br />
-    <button onClick={() => ticker.next()}>Next</button>
+    <button onClick={ticker.next}>Next</button>
   </>
 );
 ```
@@ -41,39 +40,37 @@ const App = () => (
 module.exports = {
   "plugins": [
     ["jsx-wrapper", {
-      "decorator": "mobx" // or possible value "mobx-lite", "remini-react", "remini-preact", by default "realar"
+      "decorator": "mobx-react-lite" // "mobx-react", "remini-react", "remini-preact" or some custom
     }]
   ]
 };
 ```
 
-### Realar
+
+### Remini
 
 ```javascript
-import React from 'react';
-import { prop, shared, /* observe */ } from 'realar';
+import { prop } from 'remini';
+/* import { observe } from 'remini/react'; */
 
 class Ticker {
   @prop value = 0;
   next = () => this.value += 1;
 }
 
-const sharedTicker = () => shared(Ticker);
+const ticker = new Ticker();
 
 // const App = observe(() => {
-const App = () => {
-  const { value, next } = sharedTicker();
-  return (
-    <>
-      Ticker: {value}
-      <br />
-      <button onClick={next}>Next</button>
-    </>
-  );
-};
+const App = () => (
+  <>
+    Ticker: {ticker.value}
+    <br />
+    <button onClick={ticker.next}>Next</button>
+  </>
+);
 ```
 
-[See wrapped version on CodeSandbox](https://codesandbox.io/s/realar-jsx-observe-example-5f2k2?file=/src/App.tsx).
+[See wrapped version on CodeSandbox](https://codesandbox.io/s/remini-automatic-jsx-observe-example-nxqdqr?file=/src/App.tsx).
 
 You are no need more to wrap (decorate) JSX components to `observe` function! It will be automatic.
 
@@ -81,7 +78,9 @@ You are no need more to wrap (decorate) JSX components to `observe` function! It
 // .babelrc.js
 module.exports = {
   "plugins": [
-    "jsx-wrapper" // by default "realar"
+    ["jsx-wrapper", {
+      "decorator": "remini-react" // "remini-preact", "mobx-react", "mobx-react-lite" or some custom
+    }]
   ]
 };
 ```
@@ -113,7 +112,7 @@ module.exports = {
 
 **memo** - boolean flag. Wrap all arrow function React component to `React.memo`. `false` by default.
 
-**decorator** - function name that used instead of `observe` function from Realar. (_For example: "require('mobx-preact').observer"_) Or name of presetted vendor: "mobx", "mobx-lite", "remini-react", "remini-preact", and "realar" (by default).
+**decorator** - function name that using to wrapping jsx arrow function component. (_For example: "require('mobx-preact').observer"_) Or name of presetted vendor: "remini-react", "remini-preact", "mobx-react", and "mobx-react-lite".
 
 
 ### Install
@@ -131,7 +130,7 @@ And update your babel config:
 {
   "plugins": [
     ["jsx-wrapper", {
-      "decorator": "mobx" // or "remini-react", "remini-preact", by default "realar"
+      "decorator": "mobx-react-lite"
     }]
   ]
 }
