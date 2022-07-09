@@ -1,7 +1,7 @@
 {
   "name": "babel-plugin-jsx-wrapper",
   "description": "Automatic observe jsx arrow functions",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "main": "./src/plugin.js",
   "files": [
     "src"
