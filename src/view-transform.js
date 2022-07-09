@@ -108,6 +108,9 @@ function view_transform(path, opts = {}) {
     case 'remini-preact':
       decor = 'require("remini/preact").observe';
       break;
+    case 'realar':
+      decor = 'require("realar").observe';
+      break;
     default:
       decor = opts.decorator || decor;
   }

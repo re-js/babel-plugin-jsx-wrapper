@@ -4,7 +4,7 @@
 
 Automatic observe jsx arrow functions for smartify and purify your code :+1:
 
-That plugin for babel wraps all not wrapped arrow functions (that contains JSX and defined in file global scope) to wrapper function with easy configuring [Mobx](https://github.com/mobxjs/mobx) and [Remini](https://github.com/betula/remini) (_but possible for configure to custom one_). Less code more effectiveness!
+That plugin for babel wraps all not wrapped arrow functions (that contains JSX and defined in file global scope) to wrapper function with easy configuring [Mobx](https://github.com/mobxjs/mobx), [Realar](https://github.com/betula/realar) and [Remini](https://github.com/betula/remini) (_but possible for configure to custom one_). Less code more effectiveness!
 
 ### Mobx
 
@@ -40,7 +40,7 @@ const App = () => (
 module.exports = {
   "plugins": [
     ["jsx-wrapper", {
-      "decorator": "mobx-react-lite" // "mobx-react", "remini-react", "remini-preact" or some custom
+      "decorator": "mobx-react-lite" // "mobx-react", "remini-react", "remini-preact", "realar", or some custom
     }]
   ]
 };
@@ -79,7 +79,7 @@ You are no need more to wrap (decorate) JSX components to `observe` function! It
 module.exports = {
   "plugins": [
     ["jsx-wrapper", {
-      "decorator": "remini-react" // "remini-preact", "mobx-react", "mobx-react-lite" or some custom
+      "decorator": "remini-react" // "remini-preact", "realar", "mobx-react", "mobx-react-lite", or some custom
     }]
   ]
 };
@@ -112,7 +112,7 @@ module.exports = {
 
 **memo** - boolean flag. Wrap all arrow function React component to `React.memo`. `false` by default.
 
-**decorator** - function name that using to wrapping jsx arrow function component. (_For example: "require('mobx-preact').observer"_) Or name of presetted vendor: "remini-react", "remini-preact", "mobx-react", and "mobx-react-lite".
+**decorator** - function name that using to wrapping jsx arrow function component. (_For example: "require('mobx-preact').observer"_) Or name of presetted vendor: "remini-react", "remini-preact", "realar", "mobx-react", and "mobx-react-lite".
 
 
 ### Install

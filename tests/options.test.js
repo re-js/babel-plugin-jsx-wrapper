@@ -64,6 +64,12 @@ test('should work remini/preact decorator option', () => {
   expect(transform(code, { decorator: 'remini-preact' })).toBe(expected);
 });
 
+test('should work realar decorator option', () => {
+  const code = `const a = (p) => <h1 />`;
+  const expected = `const a = require("realar").observe(p => <h1 />);`;
+  expect(transform(code, { decorator: 'realar' })).toBe(expected);
+});
+
 test('should work include option', () => {
   const code = `const a = p => <h1 />;`;
   const decorated = `const a = k(p => <h1 />);`;
