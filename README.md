@@ -50,22 +50,18 @@ module.exports = {
 ### Remini
 
 ```javascript
-import { prop } from 'remini';
+import { box, read, update } from 'remini';
 /* import { observe } from 'remini/react'; */
 
-class Ticker {
-  @prop value = 0;
-  next = () => this.value += 1;
-}
-
-const ticker = new Ticker();
+const $value = box(0);
+const next = () => update($value, (v) => v + 1);
 
 // const App = observe(() => {
 const App = () => (
   <>
-    Ticker: {ticker.value}
+    Ticker: {read($value)}
     <br />
-    <button onClick={ticker.next}>Next</button>
+    <button onClick={next}>Next</button>
   </>
 );
 ```
