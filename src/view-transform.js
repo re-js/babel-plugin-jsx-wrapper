@@ -77,7 +77,7 @@ function view_transform(path, opts = {}) {
   if (types.isCallExpression(cursor_path.parent)) return;
   if (types.isJSXExpressionContainer(cursor_path.parent)) return;
 
-  if (opts.ucfirst) {
+  if (opts.ucfirst !== false) {
     // Check if first letter of function name is uppercased
     if (types.isVariableDeclarator(cursor_path.parent)) {
       if (cursor_path.parent.id && !/^[A-Z]/.test(cursor_path.parent.id.name)) {
@@ -103,10 +103,10 @@ function view_transform(path, opts = {}) {
       break;
     case 'remini-react':
     case 'remini':
-      decor = 'require("remini/react").observe';
+      decor = 'require("remini/react").component';
       break;
     case 'remini-preact':
-      decor = 'require("remini/preact").observe';
+      decor = 'require("remini/preact").component';
       break;
     case 'realar':
       decor = 'require("realar").observe';
@@ -118,10 +118,6 @@ function view_transform(path, opts = {}) {
   let tpl = decor
     ? `${decor}(BODY)`
     : 'BODY';
-
-  if (opts.memo) {
-    tpl = `require("react").memo(${tpl})`;
-  }
 
   if (tpl === 'BODY') return;
 

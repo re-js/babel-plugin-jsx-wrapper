@@ -1,11 +1,11 @@
 const babel = require('@babel/core');
 const plugin = require('../src/plugin');
 
-const decorator_fn_name = 'require("remini/react").observe';
+const decorator_fn_name = 'require("remini/react").component';
 
 function transform(code) {
   return babel.transform(code, {
-    plugins: [[plugin, { decorator: 'remini' }]],
+    plugins: [[plugin, { decorator: 'remini', ucfirst: false }]],
     code: true,
     ast: false,
   }).code;

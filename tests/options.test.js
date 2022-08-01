@@ -1,9 +1,9 @@
 const babel = require('@babel/core');
 const plugin = require('../src/plugin');
 
-function transform(code, { decorator, filename, include, exclude, root, memo, ucfirst }) {
+function transform(code, { decorator, filename, include, exclude, root, ucfirst = false }) {
   return babel.transform(code, {
-    plugins: [[plugin, { decorator, include, exclude, root, memo, ucfirst }]],
+    plugins: [[plugin, { decorator, include, exclude, root, ucfirst }]],
     code: true,
     ast: false,
     filename,
@@ -48,19 +48,19 @@ test('should work without decorator option', () => {
 
 test('should work remini decorator option', () => {
   const code = `const a = (p) => <h1 />`;
-  const expected = `const a = require("remini/react").observe(p => <h1 />);`;
+  const expected = `const a = require("remini/react").component(p => <h1 />);`;
   expect(transform(code, { decorator: 'remini' })).toBe(expected);
 });
 
 test('should work remini/react decorator option', () => {
   const code = `const a = (p) => <h1 />`;
-  const expected = `const a = require("remini/react").observe(p => <h1 />);`;
+  const expected = `const a = require("remini/react").component(p => <h1 />);`;
   expect(transform(code, { decorator: 'remini-react' })).toBe(expected);
 });
 
 test('should work remini/preact decorator option', () => {
   const code = `const a = (p) => <h1 />`;
-  const expected = `const a = require("remini/preact").observe(p => <h1 />);`;
+  const expected = `const a = require("remini/preact").component(p => <h1 />);`;
   expect(transform(code, { decorator: 'remini-preact' })).toBe(expected);
 });
 
@@ -101,22 +101,6 @@ test('should work root option', () => {
   const decorated = `const a = k(p => <h1 />);`;
   expect(
     transform(code, { root: __dirname, exclude: ['src/*'], filename: __filename, decorator: 'k' })
-  ).toBe(decorated);
-});
-
-test('should work switch on memo option with decorator', () => {
-  const code = `const a = p => <h1 />;`;
-  const decorated = `const a = require("react").memo(k(p => <h1 />));`;
-  expect(
-    transform(code, { filename: __filename, decorator: 'k', memo: true })
-  ).toBe(decorated);
-});
-
-test('should work switch on memo option without decorator', () => {
-  const code = `const a = p => <h1 />;`;
-  const decorated = `const a = require("react").memo(p => <h1 />);`;
-  expect(
-    transform(code, { filename: __filename, memo: true })
   ).toBe(decorated);
 });
 
