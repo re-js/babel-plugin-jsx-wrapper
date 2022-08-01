@@ -1,7 +1,7 @@
 {
   "name": "babel-plugin-jsx-wrapper",
   "description": "Automatic observe jsx arrow functions",
-  "version": "0.4.1",
+  "version": "1.0.0",
   "main": "./src/plugin.js",
   "files": [
     "src"
@@ -32,11 +32,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/betula/babel-plugin-jsx-wrapper.git"
+    "url": "git+ssh://git@github.com/re-js/babel-plugin-jsx-wrapper.git"
   },
   "keywords": [
     "remini",
+    "remini component",
+    "wrapper",
     "auto observe",
+    "auto wrap",
     "observe",
     "observer",
     "babel plugin",
@@ -53,7 +56,7 @@
   "author": "Slava Bereza <mail@betula.co>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/betula/babel-plugin-jsx-wrapper/issues"
+    "url": "https://github.com/re-js/babel-plugin-jsx-wrapper/issues"
   },
-  "homepage": "https://github.com/betula/babel-plugin-jsx-wrapper#readme"
+  "homepage": "https://github.com/re-js/babel-plugin-jsx-wrapper#readme"
 }
